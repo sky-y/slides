@@ -1,0 +1,20 @@
+{
+  "name": "mume-slides",
+  "version": "1.0.0",
+  "description": "Markdown slides generator with mume",
+  "main": "index.js",
+  "scripts": {
+    "build": "node scripts/main.js",
+    "commit": "git add * && git commit -m \"npm: auto commit\"",
+    "deploy": "git push -u origin master",
+    "all": "run-s build commit deploy",
+    "gh-reset": "git commit --allow-empty -m \"Trigger rebuild\" && git push -u origin master"
+  },
+  "author": "Yuki Fujiwara",
+  "license": "MIT",
+  "devDependencies": {
+    "@shd101wyy/mume": "^0.2.7",
+    "npm-run-all": "^4.1.2",
+    "shelljs": "^0.7.8"
+  }
+}

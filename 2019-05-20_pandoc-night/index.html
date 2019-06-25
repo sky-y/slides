@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="藤原 惟 (@sky_y)">
+  <title>Pandoc Night 2019 へようこそ！</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
+  <link rel="stylesheet" href="custom.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Pandoc Night 2019 へようこそ！</h1>
+  <p class="author">藤原 惟 (@sky_y)</p>
+  <p class="date">2019年5月20日</p>
+</section>
+
+<section id="pandoc-night-2019-へようこそ" class="slide level1">
+<h1>Pandoc Night 2019 へようこそ！</h1>
+<ul>
+<li>18:30 開場</li>
+<li>19:00 開始予定</li>
+</ul>
+</section>
+<section id="タイムスケジュール" class="slide level1">
+<h1>タイムスケジュール</h1>
+<table>
+<thead>
+<tr class="header">
+<th>時刻（目安）</th>
+<th>内容・LTタイトル</th>
+<th>発表者</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>18:30</td>
+<td>開場</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>19:00</td>
+<td>開始・概要説明（＋会場提供の紹介）</td>
+<td>藤原惟</td>
+</tr>
+<tr class="odd">
+<td>19:15</td>
+<td>LT枠1 「私のPandoc遍歴」</td>
+<td><code>@setoazusa</code></td>
+</tr>
+<tr class="even">
+<td>19:30</td>
+<td>LT枠2 「RMarkdownからWordを生成する闇の技術プラスアルファな感じ（未定）」</td>
+<td><code>@niszet0</code></td>
+</tr>
+<tr class="odd">
+<td>20:00</td>
+<td>休憩（歓談タイム）</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="タイムスケジュール-1" class="slide level1">
+<h1>タイムスケジュール</h1>
+<table>
+<thead>
+<tr class="header">
+<th>時刻（目安）</th>
+<th>内容・LTタイトル</th>
+<th>発表者</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>20:15</td>
+<td>LT枠3 「私的Markdown−PDF変換環境を紹介するLT」</td>
+<td><code>@_K4ZUKI_</code></td>
+</tr>
+<tr class="even">
+<td>20:30</td>
+<td>LT枠4 【藤原がLT or 飛び入り歓迎】</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>20:45</td>
+<td>クロージング</td>
+<td>藤原惟</td>
+</tr>
+<tr class="even">
+<td>21:00</td>
+<td>一旦終了（以後、歓談タイム）</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>22:00</td>
+<td>撤収（目安）</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="注意事項" class="slide level1">
+<h1>注意事項</h1>
+<ul>
+<li>飲食可能（ビアバッシュします！）</li>
+<li>お片付けなど、ご協力いただければ幸いです！</li>
+<li><strong>営業・採用活動に関する勧誘などの行為はお断りします</strong></li>
+</ul>
+</section>
+<section id="pandocとは" class="slide level1">
+<h1>Pandocとは？</h1>
+<ul>
+<li>a universal document converter
+<ul>
+<li>万能文書変換器</li>
+<li>文書変換ツール</li>
+</ul></li>
+<li>ある文書（ドキュメント）を入力フォーマット <span class="math inline"><em>A</em></span> から 出力フォーマット <span class="math inline"><em>B</em></span> に変換する
+<ul>
+<li>コンテンツ（内容）とメタデータは<strong>可能な限り</strong>残す</li>
+<li>スタイルはバッサリ捨てて、フォーマット <span class="math inline"><em>B</em></span> に合わせる</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<p><img data-src="img/pandoc_block.jpg" class="streach" /></p>
+</section>
+<section class="slide level1">
+
+<p><img data-src="img/pandoc_block2.jpg" class="streach" /></p>
+</section>
+<section id="公式トップページ例の図" class="slide level1">
+<h1>公式トップページ：例の図</h1>
+<p><a href="https://pandoc.org/" class="uri">https://pandoc.org/</a></p>
+<img data-src="img/diagram.jpg" title="fig:" alt="Pandoc diagram" class="stretch" />
+</section>
+<section id="トップページ対応フォーマット一覧最近できた" class="slide level1">
+<h1>トップページ：対応フォーマット一覧（最近できた）</h1>
+<img data-src="img/pandoc-top-conversion.png" class="stretch" />
+</section>
+<section id="対応フォーマット軽量マークアップ言語" class="slide level1">
+<h1>対応フォーマット：軽量／マークアップ言語</h1>
+<pre><code>↔ Markdown (including CommonMark and GitHub-flavored Markdown)
+↔ reStructuredText
+→ AsciiDoc
+↔ Emacs Org-Mode
+→ Textile
+↔ MediaWiki markup</code></pre>
+</section>
+<section id="対応フォーマットhtmlxml系" class="slide level1">
+<h1>対応フォーマット：HTML/XML系</h1>
+<pre><code>↔ (X)HTML 4
+↔ HTML5
+↔ DocBook version 4 or 5
+↔ OPML
+→ OpenDocument XML</code></pre>
+</section>
+<section id="対応フォーマットワープロ組版電書系" class="slide level1">
+<h1>対応フォーマット：ワープロ・組版・電書系</h1>
+<pre><code>↔ Microsoft Word docx
+↔ OpenOffice/LibreOffice ODT
+↔ LaTeX
+→ InDesign ICML
+↔ EPUB version 2 or 3</code></pre>
+</section>
+<section id="対応フォーマットプレゼンスライド" class="slide level1">
+<h1>対応フォーマット：プレゼンスライド</h1>
+<pre><code>→ LaTeX Beamer
+→ reveal.js</code></pre>
+</section>
+<section id="対応フォーマット新しいもの要注目" class="slide level1">
+<h1>対応フォーマット：新しいもの（要注目！）</h1>
+<pre><code>→ Microsoft PowerPoint
+↔ Jupyter notebook (ipynb)</code></pre>
+</section>
+<section id="pandocは銀の弾丸か" class="slide level1">
+<h1>Pandocは「銀の弾丸」か・・・？</h1>
+<p><img data-src="img/connpass_pandoc-night2019.jpg" /></p>
+</section>
+<section id="enjoy-pandoc" class="slide level1">
+<h1>Enjoy Pandoc!</h1>
+<ul>
+<li>わからないことは質問してください！</li>
+</ul>
+</section>
+<section id="pandocユーザ会について" class="slide level1">
+<h1>Pandocユーザ会について</h1>
+</section>
+<section id="pandocユーザ会とは" class="slide level1">
+<h1>Pandocユーザ会とは</h1>
+<ul>
+<li>今のところ任意団体のユーザ会です</li>
+<li>目的
+<ul>
+<li>Pandocに関する情報共有・ヘルプ</li>
+<li>Pandocが対応する<strong>各種文書フォーマットを知り、そのユーザと交流する</strong></li>
+</ul></li>
+<li>ユーザ層はかなり多様です
+<ul>
+<li>LaTeX、Word、Sphinx、LibreOffice、Rなどなど</li>
+<li>ITエンジニアだけでなく、編集者や非IT系エンジニア（電機系？）も</li>
+</ul></li>
+</ul>
+</section>
+<section id="pandocユーザ会の活動拠点" class="slide level1">
+<h1>Pandocユーザ会の活動拠点</h1>
+<ul>
+<li>メーリングリスト
+<ul>
+<li>たまに更新、今後も使います</li>
+</ul></li>
+<li>Slack
+<ul>
+<li>アクティブですが、きちんと宣伝してませんでした <span class="emoji" data-emoji="bow">🙇</span></li>
+<li>参加希望の方は藤原まで話しかけてください！</li>
+</ul></li>
+<li>Webサイト
+<ul>
+<li>長らく放置して申し訳ありません <span class="emoji" data-emoji="bow">🙇</span></li>
+<li>ユーザーズガイド日本語版と同時にリニューアル（ベータ版で公開予定）</li>
+</ul></li>
+</ul>
+</section>
+<section id="pandocユーザ会slackにぜひ" class="slide level1">
+<h1>Pandocユーザ会Slackにぜひ！</h1>
+<p><img data-src="img/qr-pandoc-jp-slack.png" /></p>
+<p><a href="http://bit.ly/pandoc-jp" class="uri">http://bit.ly/pandoc-jp</a></p>
+</section>
+<section id="pandocユーザーズガイド-日本語訳の改訂作業" class="slide level1">
+<h1>Pandocユーザーズガイド 日本語訳の改訂作業</h1>
+</section>
+<section id="日本語訳-前のバージョン1.12.4.2超古い" class="slide level1">
+<h1>日本語訳 前のバージョン：1.12.4.2（超古い）</h1>
+<p><a href="http://sky-y.github.io/site-pandoc-jp/users-guide/" class="uri">http://sky-y.github.io/site-pandoc-jp/users-guide/</a></p>
+<p><img data-src="img/old-pandoc-users-guide-ja.png" /></p>
+</section>
+<section id="日本語訳-改訂版2.7に対応予定" class="slide level1">
+<h1>日本語訳 改訂版：2.7+に対応予定</h1>
+<ul>
+<li><a href="https://pandoc-doc-ja.readthedocs.io/ja/latest/users-guide.html" class="uri">https://pandoc-doc-ja.readthedocs.io/ja/latest/users-guide.html</a>
+<ul>
+<li>robots.txtで検索避け中（まもなく公開予定）</li>
+</ul></li>
+</ul>
+<p><img data-src="img/new-pandoc-users-guide-ja.png" /></p>
+</section>
+<section id="翻訳者レビュワー募集中" class="slide level1">
+<h1>翻訳者・レビュワー募集中！</h1>
+<ul>
+<li>Slack または 藤原にお声がけください</li>
+</ul>
+<p><img data-src="img/text_syoshinsya_kangei.png" /></p>
+</section>
+<section id="pandocの深層へようこそ" class="slide level1">
+<h1>Pandocの深層へようこそ・・・</h1>
+</section>
+<section id="pandocが扱える文書表現" class="slide level1">
+<h1>Pandocが扱える文書表現</h1>
+<ul>
+<li>実は「文書」の内部表現がPandocに存在する
+<ul>
+<li><a href="https://github.com/jgm/pandoc-types/blob/master/Text/Pandoc/Definition.hs">jgm/pandoc-types: Definition.hs</a>で定義されている</li>
+</ul></li>
+<li>Haskell: <code>data Pandoc = Pandoc Meta [Block]</code>
+<ul>
+<li><code>Pandoc</code>というデータ型がある</li>
+<li><code>Meta</code>: メタデータ</li>
+<li><code>[Block]</code>: ブロック（<code>&lt;div&gt;</code>や<code>&lt;p&gt;</code>などに相当）のリスト
+<ul>
+<li>ブロックの種類によっては、インライン <code>Inline</code> を含むこともできる</li>
+</ul></li>
+</ul></li>
+<li><strong>この制約が実はキツイ！</strong></li>
+</ul>
+</section>
+<section id="pandocをユーザが拡張する方法" class="slide level1">
+<h1>Pandocをユーザが拡張する方法</h1>
+<ul>
+<li>フィルタ：自分でコードを書いてカスタマイズできる</li>
+<li>テンプレート：コンテンツを流し込んで出力ファイルを得る元のテンプレート</li>
+<li>Reference Doc</li>
+</ul>
+</section>
+<section id="フィルタ" class="slide level1">
+<h1>フィルタ</h1>
+<ul>
+<li>自分でコードを書いてカスタマイズできる</li>
+<li>オプション: <code>-F</code> or <code>--filter</code></li>
+<li>JSONフィルタ：任意のプログラミング言語で書かれた実行可能ファイル</li>
+<li>Luaフィルタ：Pandocバイナリが持っているLua処理系を用いたフィルタ
+<ul>
+<li><span class="emoji" data-emoji="o">⭕</span> 早い、外部プログラムに依存しない</li>
+<li><span class="emoji" data-emoji="x">❌</span> Luaの学習コスト、デバッグにコツが必要</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<p><img data-src="img/pandoc_block3.jpg" /></p>
+</section>
+<section id="テンプレート" class="slide level1">
+<h1>テンプレート</h1>
+<ul>
+<li>コンテンツを流し込んで出力ファイルを得る元のテンプレート</li>
+<li>オプション: <code>--template</code></li>
+<li>迷ったら <code>pandoc -D フォーマット名</code> でテンプレートを直接読もう！</li>
+<li>Pandocのデフォルトテンプレート (<a href="https://github.com/jgm/pandoc-templates">pandoc-templates</a>) をForkし拡張するのがおすすめ
+<ul>
+<li>バージョンごとにアグレッシブに変わるため</li>
+</ul></li>
+</ul>
+</section>
+<section id="補足メタデータとテンプレート変数" class="slide level1">
+<h1>補足：メタデータとテンプレート変数</h1>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>メタデータ</th>
+<th>テンプレート変数</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>出力ファイルのメタデータとして出力</td>
+<td><span class="emoji" data-emoji="o">⭕</span></td>
+<td><span class="emoji" data-emoji="x">❌</span></td>
+</tr>
+<tr class="even">
+<td>テンプレートに変数埋め込み</td>
+<td><span class="emoji" data-emoji="o">⭕</span></td>
+<td><span class="emoji" data-emoji="o">⭕</span></td>
+</tr>
+<tr class="odd">
+<td>オプション</td>
+<td><code>-M key=val</code></td>
+<td><code>-V key=val</code></td>
+</tr>
+<tr class="even">
+<td>YAMLメタデータブロック</td>
+<td><span class="emoji" data-emoji="o">⭕</span></td>
+<td><span class="emoji" data-emoji="x">❌</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="reference-doc" class="slide level1">
+<h1>Reference Doc</h1>
+<ul>
+<li>Wordなどテキストで表現しにくい文書について、具体的なファイル (docxなど) をテンプレートの代わりにする
+<ul>
+<li><code>--refernce-doc</code> (注意：以前は <code>--refence-docx</code> だった！)</li>
+</ul></li>
+<li>Haskellを書いて <a href="https://github.com/jgm/pandoc">jgm/pandoc</a> に直接コントリビュートする！</li>
+</ul>
+</section>
+<section id="カスタムwriter" class="slide level1">
+<h1>カスタムWriter</h1>
+<ul>
+<li>出力ファイルを担当するモジュール（Writer）をユーザがLuaで書ける</li>
+<li>基本のLuaソースがあるので、これを流用して書いてもいい
+<ul>
+<li><a href="https://github.com/jgm/pandoc/blob/master/data/sample.lua">pandoc/sample.lua</a></li>
+</ul></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Push each slide change to the browser history
+        history: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

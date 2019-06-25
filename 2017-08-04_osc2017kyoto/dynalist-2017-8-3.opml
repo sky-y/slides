@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<opml version="2.0">
+  <head>
+    <title></title>
+    <flavor>dynalist</flavor>
+    <source>https://dynalist.io</source>
+    <ownerName>藤原由来</ownerName>
+    <ownerEmail>sky.y.0079@gmail.com</ownerEmail>
+  </head>
+  <body>
+    <outline text="スライド アウトライン">
+      <outline text="自己紹介"/>
+      <outline text="今日話すこと"/>
+      <outline text="Pandocで何ができるか">
+        <outline text="ある書式のドキュメント（文書）を、別の書式の変換できる"/>
+        <outline text="例の画像"/>
+        <outline text="例えば"/>
+        <outline text="高度な使い方">
+          <outline text="フィルタ機能">
+            <outline text="特定の文書構造（タグ）を狙い撃ちで変換できる"/>
+            <outline text="Pandoc内部の中間文書をJSON形式で外部のフィルタプログラムに渡し、その結果を再びPandocが受け取る">
+              <outline text="図で説明"/>
+            </outline>
+            <outline text="例：ある見出しレベル以下を全てリストに変換">
+              <outline text="アウトライナーで下書きしたものを、スライド用のMarkdownに変換"/>
+            </outline>
+          </outline>
+          <outline text="シェルスクリプトへの組み込み">
+            <outline text="複数ファイルの処理"/>
+            <outline text="パイプ"/>
+          </outline>
+          <outline text="各種プログラミング言語におけるライブラリとしての呼び出し"/>
+        </outline>
+      </outline>
+      <outline text="Pandocとは何か" collapsed="true">
+        <outline text="John MacFarlane (jgm) が開発指揮"/>
+        <outline text="Pandocの思想"/>
+        <outline text="OSSとしてのPandoc">
+          <outline text="GPL"/>
+          <outline text="Haskell製"/>
+        </outline>
+      </outline>
+      <outline text="PandocとMarkdown" collapsed="true">
+        <outline text="Babelmark">
+          <outline text="Pandoc = pan (汎・全ての) + doc (文書)"/>
+          <outline text="バベルの塔を崩すもの→Excel方眼紙（ネ申エクセル）"/>
+        </outline>
+        <outline text="Markdownとは元々なんだったか"/>
+        <outline text="Markdownをめぐる現在の状況"/>
+        <outline text="PandocにおけるMarkdownの位置づけ">
+          <outline text="Pandoc&apos;s Markdown (PandocデフォルトのMarkdown方言)"/>
+          <outline text="「ぼくがかんがえたさいきょうのまーくだうん」">
+            <outline text="数種類のMarkdown方言＋LaTeX記法のいいとこどり"/>
+          </outline>
+          <outline text="Pandocが内部で扱う中間文書のモデル（Haskell上の`Pandoc`型）を最もよく表現する文法"/>
+        </outline>
+        <outline text="CommonMark">
+          <outline text="jgmを中心としたメンバーが中心になって策定">
+            <outline text="おおよそ、Pandoc&apos;s Markdownのサブセットに近い（よく使われる割に実装されてない記法も多い）"/>
+          </outline>
+          <outline text="事実上の標準規格？">
+            <outline text="Markdownに関するRFCはあるが、そのRFC自体がMarkdown仕様を定めているわけではない"/>
+          </outline>
+          <outline text="JavaScript系のライブラリを中心に、最近採用されつつあるらしい">
+            <outline text="ウェブサービス・アプリで使えるMarkdownが、実はCommonMark準拠だったケースが最近ある（Boostnoteとか）"/>
+          </outline>
+        </outline>
+      </outline>
+      <outline text="レシピ集（よくある使い方）"/>
+      <outline text="まとめとお知らせ"/>
+      <outline text="日本Pandocユーザ会Slackのご案内">
+        <outline text="招待用リンク"/>
+      </outline>
+      <outline text="今日話さないこと">
+        <outline text="各プログラミング言語に特化したソフトウェアドキュメント">
+          <outline text="JavaDocとか"/>
+        </outline>
+      </outline>
+    </outline>
+  </body>
+</opml>
