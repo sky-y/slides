@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="藤原 惟 (@sky_y)">
+  <title>OSSドキュメント翻訳の事例紹介 - Pandocユーザーズガイド日本語版の場合</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
+  <link rel="stylesheet" href="custom.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">OSSドキュメント翻訳の事例紹介 - Pandocユーザーズガイド日本語版の場合</h1>
+  <p class="author">藤原 惟 (@sky_y)</p>
+  <p class="date">2019年6月22日</p>
+</section>
+
+<section id="自己紹介" class="slide level1">
+<h1>自己紹介</h1>
+<ul>
+<li>藤原 惟 (@sky_y)</li>
+<li>フリーエンジニア・ライター</li>
+<li>著書『Markdownライティング入門』（インプレスR&amp;D）</li>
+<li>日本Pandocユーザ会 代表
+<ul>
+<li>Pandocユーザーズガイド翻訳（後述）</li>
+<li>OSPN Pressに寄稿</li>
+<li>初のユーザイベント「Pandoc Night」開催（2019/5/20 @ 東京）</li>
+</ul></li>
+</ul>
+</section>
+<section id="今日お話しする内容" class="slide level1">
+<h1>今日お話しする内容</h1>
+<ul>
+<li>ドキュメント翻訳を支える技術
+<ul>
+<li>目的：<a href="https://pandoc.org/MANUAL.html">Pandoc User’s Guide</a>（英文）を翻訳しユーザが見られるようにする</li>
+<li>いくつかの課題がある</li>
+</ul></li>
+</ul>
+</section>
+<section id="pandocとは" class="slide level1">
+<h1>Pandocとは？</h1>
+<ul>
+<li>a universal document converter
+<ul>
+<li>万能文書変換器</li>
+<li>文書変換ツール</li>
+</ul></li>
+<li>ある文書（ドキュメント）を入力フォーマット <span class="math inline"><em>A</em></span> から 出力フォーマット <span class="math inline"><em>B</em></span> に変換する
+<ul>
+<li>コンテンツ（内容）とメタデータは<strong>可能な限り</strong>残す</li>
+<li>スタイルはバッサリ捨てて、フォーマット <span class="math inline"><em>B</em></span> に合わせる</li>
+</ul></li>
+<li>オープンソースソフトウェア (GPL v2 or later)</li>
+</ul>
+</section>
+<section id="ospn-pressの記事" class="slide level1">
+<h1>OSPN Pressの記事</h1>
+<ul>
+<li><a href="https://www.ospn.jp/press/20170705no52-useit-oss.html">「オープンソース」を使ってみよう（第47回 Pandoc）</a></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<p><img data-src="img/pandoc_block.jpg" class="streach" /></p>
+</section>
+<section class="slide level1">
+
+<p><img data-src="img/pandoc_block2.jpg" class="streach" /></p>
+</section>
+<section id="公式トップページ例の図" class="slide level1">
+<h1>公式トップページ：例の図</h1>
+<p><a href="https://pandoc.org/" class="uri">https://pandoc.org/</a></p>
+<img data-src="img/diagram.jpg" title="fig:" alt="Pandoc diagram" class="stretch" />
+</section>
+<section id="トップページ対応フォーマット一覧最近できた" class="slide level1">
+<h1>トップページ：対応フォーマット一覧（最近できた）</h1>
+<img data-src="img/pandoc-top-conversion.png" class="stretch" />
+</section>
+<section id="代表的な対応フォーマット" class="slide level1">
+<h1>代表的な対応フォーマット</h1>
+<ul>
+<li>軽量/Wikiマークアップ言語
+<ul>
+<li>↔︎ Markdown (GFM, CommonMarkなど各種方言に対応)</li>
+<li>↔︎ reStructuredTextなど</li>
+<li>↔︎ MediaWiki markup</li>
+</ul></li>
+<li>↔︎ HTML, EPUB, LaTeX</li>
+<li>オフィス系
+<ul>
+<li>↔︎ Microsoft Word docx</li>
+<li>↔︎ OpenOffice/LibreOffice ODT</li>
+</ul></li>
+<li>→ スライド (LaTeX Beamer, reveal.jsなど)</li>
+</ul>
+</section>
+<section id="ここ最近で対応したフォーマット" class="slide level1">
+<h1>ここ最近で対応したフォーマット</h1>
+<pre><code>→ Microsoft PowerPoint
+↔ Jupyter notebook (ipynb)
+→ Jira wiki markup</code></pre>
+</section>
+<section id="pandocユーザ会について" class="slide level1">
+<h1>Pandocユーザ会について</h1>
+</section>
+<section id="pandocユーザ会とは" class="slide level1">
+<h1>Pandocユーザ会とは</h1>
+<ul>
+<li>今のところ任意団体のユーザ会です</li>
+<li>目的
+<ul>
+<li>Pandocに関する情報共有・ヘルプ</li>
+<li>Pandocが対応する<strong>各種文書フォーマットを知り、そのユーザと交流する</strong></li>
+</ul></li>
+<li>ユーザ層はかなり多様です
+<ul>
+<li>LaTeX、Word、Sphinx、LibreOffice、Rなどなど</li>
+<li>ITエンジニアだけでなく、編集者や非IT系エンジニア（電機系？）も</li>
+</ul></li>
+</ul>
+</section>
+<section id="pandocユーザ会の活動拠点" class="slide level1">
+<h1>Pandocユーザ会の活動拠点</h1>
+<ul>
+<li>メーリングリスト
+<ul>
+<li>たまに更新、今後も使います</li>
+</ul></li>
+<li>Slack
+<ul>
+<li>アクティブですが、きちんと宣伝してませんでした <span class="emoji" data-emoji="bow">🙇</span></li>
+<li>参加希望の方は藤原まで話しかけてください！</li>
+</ul></li>
+<li>Webサイト
+<ul>
+<li>長らく放置して申し訳ありません <span class="emoji" data-emoji="bow">🙇</span></li>
+<li>ユーザーズガイド日本語版と同時にリニューアル（ベータ版で公開予定）</li>
+</ul></li>
+</ul>
+</section>
+<section id="pandocユーザーズガイド-日本語訳の改訂作業" class="slide level1">
+<h1>Pandocユーザーズガイド 日本語訳の改訂作業</h1>
+</section>
+<section id="日本語訳-前のバージョン1.12.4.2超古い" class="slide level1">
+<h1>日本語訳 前のバージョン：1.12.4.2（超古い）</h1>
+<p><a href="http://sky-y.github.io/site-pandoc-jp/users-guide/" class="uri">http://sky-y.github.io/site-pandoc-jp/users-guide/</a></p>
+<p><img data-src="img/old-pandoc-users-guide-ja.png" /></p>
+</section>
+<section id="日本語訳-改訂版2.7に対応予定" class="slide level1">
+<h1>日本語訳 改訂版：2.7+に対応予定</h1>
+<ul>
+<li><a href="https://pandoc-doc-ja.readthedocs.io/ja/latest/users-guide.html" class="uri">https://pandoc-doc-ja.readthedocs.io/ja/latest/users-guide.html</a>
+<ul>
+<li>robots.txtで検索避け中（まもなく公開予定）</li>
+</ul></li>
+</ul>
+<p><img data-src="img/new-pandoc-users-guide-ja.png" /></p>
+</section>
+<section id="前回の反省とこれからの課題" class="slide level1">
+<h1>前回の反省とこれからの課題</h1>
+<ul>
+<li>前回：1人で全部訳した
+<ul>
+<li>持続可能でない (藤原が辛い)</li>
+<li>共同作業の仕組みがなかった</li>
+</ul></li>
+<li>gettextや翻訳メモリなど、翻訳ツールを使わなかった
+<ul>
+<li>テキストエディタ上で直接英文を和訳していた</li>
+<li>非効率的</li>
+</ul></li>
+<li>Pandocのバージョンが頻繁に上がる (1～3ヶ月に1度ぐらい)
+<ul>
+<li>User’s Guide原文も頻繁に書き換わる</li>
+<li>和訳も素早く追随する必要がある</li>
+</ul></li>
+</ul>
+</section>
+<section id="改訂版pandocユーザーズガイド" class="slide level1">
+<h1>改訂版・Pandocユーザーズガイド</h1>
+<ul>
+<li>作業中・未完成のものです</li>
+<li><a href="https://pandoc-doc-ja.readthedocs.io/ja/latest/" class="uri">https://pandoc-doc-ja.readthedocs.io/ja/latest/</a></li>
+<li>GitHub: <a href="https://github.com/pandoc-jp/pandoc-doc-ja">pandoc-jp/pandoc-doc-ja</a></li>
+</ul>
+</section>
+<section id="改訂版ユーザーズガイドのシステム構成" class="slide level1">
+<h1>改訂版ユーザーズガイドのシステム構成</h1>
+</section>
+<section class="slide level1">
+
+<img data-src="img/pandoc-doc-ja-translation.jpg" class="stretch" />
+</section>
+<section id="github-jgmpandoc-users-guide原文" class="slide level1">
+<h1>GitHub (jgm/pandoc): User’s Guide原文</h1>
+<ul>
+<li><a href="https://github.com/jgm/pandoc">jgm/pandoc</a>: Pandoc本体のリポジトリ</li>
+<li><a href="https://github.com/jgm/pandoc/blob/master/MANUAL.txt">MANUAL.txt</a>
+<ul>
+<li>Pandoc User’s Guideの原稿となるMarkdown文書</li>
+</ul></li>
+<li><strong>Pandoc’s MarkdownというMarkdown方言で書かれている</strong>
+<ul>
+<li>→ Pandocで変換するしかない</li>
+</ul></li>
+</ul>
+</section>
+<section id="manual.txtを翻訳webサイト生成したいが" class="slide level1">
+<h1>MANUAL.txtを翻訳・Webサイト生成したいが……</h1>
+<ul>
+<li>Pandocの出力は原則1ファイル
+<ul>
+<li>複数ページのWebサイトを構築するためには、別のツールの助けが必要</li>
+</ul></li>
+<li>Markdownを翻訳する手段: <a href="https://po4a.org/index.php.ja">po4a</a>
+<ul>
+<li>gettextが想定しないドキュメントでの翻訳が目標</li>
+<li>情報源が少ないので、今回は見送り（future work）</li>
+</ul></li>
+</ul>
+</section>
+<section id="そうだsphinxを使おう" class="slide level1">
+<h1>そうだ、Sphinxを使おう！</h1>
+<ul>
+<li>Sphinx: ドキュメントビルダー
+<ul>
+<li>sphinx-intl: gettextベースの翻訳ユーティリティ</li>
+<li>情報源・実績・エコシステムが豊富</li>
+<li><strong>ただし reStructuredText (reST) が前提</strong></li>
+</ul></li>
+<li>最大の採用理由：Pandocユーザ会のメンバーにSphinxメンテナがいらっしゃる！
+<ul>
+<li>小宮さん (<code>@tk0miya</code>)</li>
+</ul></li>
+</ul>
+</section>
+<section id="今回のプロジェクトでの判断" class="slide level1">
+<h1>今回のプロジェクトでの判断</h1>
+<ul>
+<li>Sphinx + sphinx-intl を採用</li>
+<li>MANUAL.txt (Pandoc’s Markdown) を reST に変換する
+<ul>
+<li>ここでPandocが活躍！（ただし1行でおわり）</li>
+</ul></li>
+<li>Read the Docs でビルド（CI）＆ホスティング
+<ul>
+<li>Sphinxを公式サポート → 気軽に導入できる</li>
+<li>GitHubリポジトリから自動的にビルド</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<img data-src="img/pandoc-doc-ja-translation1_githubjgm.jpg" class="stretch" />
+</section>
+<section id="jgmpandoc-から-manual.txt-を取得する" class="slide level1">
+<h1>jgm/pandoc から MANUAL.txt を取得する</h1>
+<ul>
+<li>git submodule を利用して、リポジトリを同期
+<ul>
+<li>MANUAL.txtを特定バージョン (tag) に固定できる</li>
+<li>例: <code>2.7.2</code></li>
+</ul></li>
+<li>参考: <a href="https://qiita.com/sotarok/items/0d525e568a6088f6f6bb">Git submodule の基礎 - Qiita</a></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<img data-src="img/pandoc-doc-ja-translation2_pandoc.jpg" class="stretch" />
+</section>
+<section id="pandoc-markdown---restructuredtext" class="slide level1">
+<h1>Pandoc: Markdown -&gt; reStructuredText</h1>
+<pre><code>$ pandoc -f markdown -t rst MANUAL.txt -o users-guide.rst</code></pre>
+<ul>
+<li><code>-f markdown</code>: 入力形式はPandoc’s Markdown</li>
+<li><code>-t rst</code>: 出力形式はreStructuredText</li>
+<li><code>-o</code> 出力ファイル</li>
+<li>実際にはMakefileに書いている</li>
+</ul>
+</section>
+<section id="markdown-と-restructuredtext-の違い" class="slide level1">
+<h1>Markdown と reStructuredText の違い</h1>
+<ul>
+<li>Markdown
+<ul>
+<li>Web業界で大人気（それ以外ではあんまり知られてない）</li>
+<li>元々はHTML出力が目的（今は広がっている）</li>
+<li>記法の記述能力：弱い</li>
+<li>「Markdown方言」問題</li>
+</ul></li>
+<li>reStructuredText (reST)
+<ul>
+<li>記法の記述能力：高い</li>
+<li>ドキュメンテーション用途を想定している</li>
+<li>Sphinxの標準記法（Python界では知られている？）</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<img data-src="img/pandoc-doc-ja-translation3_sphinxintl.jpg" class="stretch" />
+</section>
+<section id="sphinx-intl-翻訳ファイル生成-potpo" class="slide level1">
+<h1>sphinx-intl: 翻訳ファイル生成 (pot/po)</h1>
+<ul>
+<li><a href="http://www.sphinx-doc.org/ja/master/usage/advanced/intl.html">国際化 — Sphinx 3.0.0+/d6dff753 ドキュメント</a></li>
+<li>Sphinx用翻訳ユーティリティ（gettextを内部で用いている）</li>
+</ul>
+<pre><code># potファイル作成
+$ make gettext
+
+# poファイル作成
+$ sphinx-intl update -p _build/gettext -l ja  # </code></pre>
+</section>
+<section id="sphinx-intl-gettext-の仕組み" class="slide level1">
+<h1>sphinx-intl (gettext) の仕組み</h1>
+<p><img data-src="img/gettext_translation.png" /></p>
+<p><a href="http://www.sphinx-doc.org/ja/master/usage/advanced/intl.html">国際化 — Sphinx 3.0.0+/d6dff753 ドキュメント</a></p>
+</section>
+<section class="slide level1">
+
+<img data-src="img/pandoc-doc-ja-translation4_transifex.jpg" class="stretch" />
+</section>
+<section id="transifex-翻訳作業用のwebアプリ" class="slide level1">
+<h1>Transifex: 翻訳作業用のWebアプリ</h1>
+<ul>
+<li>Webベースで翻訳作業 → poファイル生成ができる</li>
+<li>OSSプロジェクトは無料で利用可能（要登録）</li>
+<li>複数ユーザで翻訳作業が可能</li>
+<li>Sphinxとも相性が良い（専用ユーティリティツールが存在）</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<figure>
+<img data-src="img/transifex-pandoc.png" alt="transifex-pandoc" /><figcaption>transifex-pandoc</figcaption>
+</figure>
+</section>
+<section id="翻訳からビルドまでの流れ" class="slide level1">
+<h1>翻訳からビルドまでの流れ</h1>
+<ol type="1">
+<li>Sphinx(-intl) でpoファイルを生成</li>
+<li>poファイルをTransifexにアップロード</li>
+<li>Transifex（Webブラウザ上）でひたすら翻訳する</li>
+<li>翻訳済poファイルをダウンロードする</li>
+<li>Sphinx(-intl) でHTMLをビルド</li>
+</ol>
+</section>
+<section id="デモtransifex上での翻訳" class="slide level1">
+<h1>デモ：Transifex上での翻訳</h1>
+</section>
+<section class="slide level1">
+
+<img data-src="img/pandoc-doc-ja-translation5_sphinx.jpg" class="stretch" />
+</section>
+<section id="sphinx-htmlを生成" class="slide level1">
+<h1>Sphinx: HTMLを生成</h1>
+<ul>
+<li>基本的には <code>make html</code> でビルド</li>
+<li>sphinx-intl用に <code>-D language='ja'</code> のオプションを追加</li>
+</ul>
+<pre><code>$ make -e SPHINXOPTS=&quot;-D language=&#39;ja&#39;&quot; html</code></pre>
+</section>
+<section class="slide level1">
+
+<img data-src="img/pandoc-doc-ja-translation6_rtd.jpg" class="stretch" />
+</section>
+<section id="read-the-docs-ci-ホスティング" class="slide level1">
+<h1>Read the Docs: CI &amp; ホスティング</h1>
+<p><a href="https://readthedocs.org/">Read the Docs</a></p>
+<ul>
+<li>ドキュメントのホスティングサイト
+<ul>
+<li>オープンソース向けは無料でホスティング可能</li>
+</ul></li>
+<li>ドキュメントビルダーは Sphinx と MkDocs (Markdown向け) に対応</li>
+<li>GitHubのpushを検出するhook → 自動ビルド</li>
+<li>そのまま公開できる</li>
+</ul>
+</section>
+<section id="改訂版pandocユーザーズガイド-1" class="slide level1">
+<h1>改訂版・Pandocユーザーズガイド</h1>
+<ul>
+<li>作業中・未完成のものです</li>
+<li><a href="https://pandoc-doc-ja.readthedocs.io/ja/latest/" class="uri">https://pandoc-doc-ja.readthedocs.io/ja/latest/</a></li>
+<li>GitHub: <a href="https://github.com/pandoc-jp/pandoc-doc-ja">pandoc-jp/pandoc-doc-ja</a></li>
+</ul>
+</section>
+<section id="失敗談議論今後の課題" class="slide level1">
+<h1>失敗談・議論・今後の課題</h1>
+</section>
+<section id="失敗談ロケール設定をミスった-1" class="slide level1">
+<h1>失敗談：ロケール設定をミスった (1)</h1>
+<ul>
+<li>言語設定は <code>ja</code> (日本語)
+<ul>
+<li><code>ja_JP</code> (日本語・日本) はRead the Docsで対応していない（！）</li>
+<li>最初、後者の設定にしていたため、あとで<code>ja_JP</code> から <code>ja</code> に諸々データを移植した</li>
+</ul></li>
+</ul>
+<pre><code>$ sphinx-intl update -p _build/gettext -l ja     # Good
+$ sphinx-intl update -p _build/gettext -l ja_JP  # Bad</code></pre>
+</section>
+<section id="失敗談ロケール設定をミスった-2" class="slide level1">
+<h1>失敗談：ロケール設定をミスった (2)</h1>
+<ul>
+<li>結果として、<strong>Transifex（後述）の翻訳メタデータを飛ばした（泣）</strong>
+<ul>
+<li>翻訳結果は残ったが、「誰がいつ翻訳したか」が分からなくなった</li>
+</ul></li>
+</ul>
+</section>
+<section id="議論機械翻訳の可否" class="slide level1">
+<h1>議論：機械翻訳の可否</h1>
+<ul>
+<li>オープンソースプロジェクトに、<strong>一切</strong>機械翻訳を導入すべきでない？
+<ul>
+<li>「Ubuntu機械翻訳おじさん」事件</li>
+<li><a href="https://togetter.com/li/1084225">Ubuntu英日翻訳にGoogle翻訳の成果物を突っ込む人物が現れライセンスがなんじゃもんじゃでつらい - Togetter</a></li>
+</ul></li>
+<li>ライセンス違反は論外として……</li>
+<li>Q「読者がドキュメントを読んで、機械翻訳かどうか判別できるか？」</li>
+</ul>
+</section>
+<section id="藤原の見解" class="slide level1">
+<h1>藤原の見解</h1>
+<ul>
+<li>「翻訳プロジェクトの責任者が、翻訳責任を持つ」
+<ul>
+<li>責任者は、ライセンス違反になるような機械翻訳を排除する責任がある</li>
+<li>責任を取るのが人間の最後の仕事</li>
+<li>（実務上は、機械翻訳されたものを厳密に100%排除するのは原理上無理では？）</li>
+</ul></li>
+<li>本プロジェクトでの周知事項
+<ul>
+<li><strong>参考として</strong>機械翻訳を利用することは差し支えない</li>
+<li><strong>最終的には、自力で翻訳すること</strong></li>
+</ul></li>
+</ul>
+</section>
+<section id="今後の課題-1" class="slide level1">
+<h1>今後の課題 (1)</h1>
+<ul>
+<li>モチベーション管理
+<ul>
+<li>藤原自身と、翻訳チームメンバー</li>
+<li>停滞気味なので、うまく進む仕掛けを仕込みたい</li>
+</ul></li>
+<li>本当の意味で継続的インテグレーション(CI)を実現したい
+<ul>
+<li>まだ藤原が手作業でやっている部分も多い</li>
+<li>特にTransifex（poファイル）まわりは手動</li>
+<li>Pandocのバージョンアップ追随には必須</li>
+</ul></li>
+</ul>
+</section>
+<section id="今後の課題-2" class="slide level1">
+<h1>今後の課題 (2)</h1>
+<ul>
+<li>翻訳の品質向上
+<ul>
+<li>用語集・翻訳メモリなどがうまく使えていない</li>
+<li>「良い翻訳」のノウハウが不足している</li>
+</ul></li>
+</ul>
+</section>
+<section id="紹介ドキュメンテーションの世界的なコミュニティ" class="slide level1">
+<h1>紹介：ドキュメンテーションの世界的なコミュニティ</h1>
+<p><a href="https://www.writethedocs.org/">Write the Docs</a></p>
+<ul>
+<li>カンファレンス・ミートアップ
+<ul>
+<li>2019: 米ポートランド、リトアニア、チェコ、オーストラリア</li>
+</ul></li>
+<li>学習リソース</li>
+<li>Slack・情報共有</li>
+<li>仕事紹介</li>
+</ul>
+</section>
+<section id="最後に翻訳者レビュワー募集中" class="slide level1">
+<h1>最後に：翻訳者・レビュワー募集中！</h1>
+<ul>
+<li>Slack または 藤原にお声がけください</li>
+</ul>
+<p><img data-src="img/text_syoshinsya_kangei.png" /></p>
+</section>
+<section id="pandocユーザ会slackにお越しください" class="slide level1">
+<h1>Pandocユーザ会Slackにお越しください！</h1>
+<p><img data-src="img/qr-pandoc-jp-slack.png" /></p>
+<p><a href="http://bit.ly/pandoc-jp" class="uri">http://bit.ly/pandoc-jp</a></p>
+</section>
+<section id="おまけこの発表スライドを支える技術" class="slide level1">
+<h1>おまけ：この発表スライドを支える技術</h1>
+<ul>
+<li>Pandoc</li>
+<li>reveal.js: HTMLスライド</li>
+</ul>
+<pre><code>$ pandoc index.md -f markdown -t revealjs -o index.html -s -c custom.css </code></pre>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Push each slide change to the browser history
+        history: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
