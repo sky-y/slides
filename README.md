@@ -5,9 +5,11 @@
 ## Pandocチュートリアル（Haskell on Skype）
 
 - Pandocチュートリアル 第1回 Pandocでドキュメントを変換しよう（2017年1月20日）
+    - [Pandocチュートリアル 第1回 - connpass](https://haskell-with-skype.connpass.com/event/48446/)
     - [スライド（HTML形式）](https://sky-y.github.io/slides/2017-01_haskell_skype_pandoc/2017-01-20/index.html)
     - [リポジトリ](https://github.com/sky-y/slides/tree/master/2017-01_haskell_skype_pandoc/2017-01-20)
 - Pandocチュートリアル 第2回 HaskellでPandocフィルタを実装しよう（2017年2月17日）
+    - [Pandocチュートリアル 第2回 - connpass](https://haskell-with-skype.connpass.com/event/49243/)
     - [スライド（HTML形式）](https://sky-y.github.io/slides/2017-01_haskell_skype_pandoc/2017-02-17/index.html)
     - [リポジトリ](https://github.com/sky-y/slides/tree/master/2017-01_haskell_skype_pandoc/2017-02-17)
 
