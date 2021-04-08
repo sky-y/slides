@@ -67,3 +67,11 @@
 
 - [スライド（HTML形式）](https://sky-y.github.io/slides/2019-06-22_doc_meets/index.html)
 - [リポジトリ](https://github.com/sky-y/slides/tree/master/2019-06-22_doc_meets)
+
+## ぶっちゃけ儲かるの？ アウトプットするエンジニア大集合LT！
+
+2019年9月27日
+
+[Developers Summit 2019 KANSAI](https://event.shoeisha.jp/devsumi/20190927)
+
+- [セッションページ](https://event.shoeisha.jp/devsumi/20190927/session/2132/)
